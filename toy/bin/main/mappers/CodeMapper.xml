@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="com.toy.mapper.CodeMapper">
+ 
+    <insert id="parentCodeInsert" parameterType="com.toy.code.CodeDto">
+        insert into tc_code_parents
+            values
+        (#{parent_code},#{code_title},now(),'system',now(),'system')
+    </insert>
+ 	<select id="listParentCode" resultType="com.toy.code.CodeDto">
+ 		select parent_code,code_title from tc_code_parents
+ 	</select>
+</mapper>
