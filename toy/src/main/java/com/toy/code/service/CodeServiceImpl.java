@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.toy.code.CodeDto;
-import com.toy.mapper.CodeMapper;
+import com.toy.code.dto.CodeDto;
+import com.toy.code.mapper.CodeMapper;
 @Service("codeService")
 public class CodeServiceImpl implements ICodeService {
 	@Autowired
  	private CodeMapper codeMapper;
 	
 	@Override
-	public void insertParentCode(CodeDto dto) throws Exception {
-		codeMapper.insertParentCode(dto);
+	public int insertParentCode(CodeDto dto) throws Exception {
+		return codeMapper.insertParentCode(dto);
 
 	}
 
@@ -22,6 +22,12 @@ public class CodeServiceImpl implements ICodeService {
 	public List<CodeDto> listParentCode() throws Exception {
 		// TODO Auto-generated method stub
 		return codeMapper.listParentCode();
+	}
+
+	@Override
+	public int insertChildCode(CodeDto paramDto) throws Exception {
+		// TODO Auto-generated method stub
+		return codeMapper.insertChildCode(paramDto);
 	}
 
 }

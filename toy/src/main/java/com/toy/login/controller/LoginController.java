@@ -11,7 +11,7 @@ public class LoginController {
 		//mv.setViewName();
 		return "base/login/login";
 	}
-	@RequestMapping("/account")
+	@RequestMapping("/login/account")
 	public String accountView(ModelAndView mv){
 		//mv.setViewName();
 		return "base/login/account";

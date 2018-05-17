@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.toy.code.CodeDto;
+import com.toy.code.dto.CodeDto;
 import com.toy.code.service.ICodeService;
 
 @RestController

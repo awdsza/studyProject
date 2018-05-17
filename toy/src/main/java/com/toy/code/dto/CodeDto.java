@@ -1,4 +1,4 @@
-package com.toy.code;
+package com.toy.code.dto;
 
 import com.toy.base.BaseDto;
 

@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.toy.code.CodeDto;
-import com.toy.mapper.CodeMapper;
+import com.toy.code.dto.CodeDto;
+import com.toy.code.mapper.CodeMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest

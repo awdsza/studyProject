@@ -13,7 +13,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 
 @SpringBootApplication
-@MapperScan(value = {"com.toy.mapper"})
+@MapperScan(value = {"com.toy.*.mapper"})
 public class ToyApplication {
 
 	public static void main(String[] args) {
@@ -25,12 +25,12 @@ public class ToyApplication {
 	@Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource)throws Exception{
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-            sessionFactory.setDataSource(dataSource);
-            
-            Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*Mapper.xml");
-            
-            sessionFactory.setMapperLocations(res);
-            
-            return sessionFactory.getObject();
+        sessionFactory.setDataSource(dataSource);
+        
+        Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*/*Mapper.xml");
+        
+        sessionFactory.setMapperLocations(res);
+        
+        return sessionFactory.getObject();
     }
 }

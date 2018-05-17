@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.toy.user.mapper.UserMapper">
+	<insert id="insert" parameterType="com.toy.user.dto.UserDto">
+		insert into tc_user
+		(user_id,
+		 user_pw,
+		 <if test="user_name != null">
+			 user_name,
+		 </if>
+		 <if test="user_phone != null">
+		 user_phone,
+		 </if>
+		 <if test="user_email != null">
+		 user_email,
+		 </if>
+		 <if test="user_addr != null">
+		 user_addr,
+		 </if>
+		 <if test="user_nickname != null">
+		 user_nickname,
+		 </if>
+		 user_type,
+		 user_rest,
+		 user_yn
+		 )
+		 values (
+			 #{user_id},
+			 #{user_pw},
+			 <if test="user_name != null">
+			  #{user_name},
+			 </if>
+			 <if test="user_phone != null">
+			 #{user_phone},
+			 </if>
+			 <if test="user_email != null">
+			 #{user_email},
+			 </if>
+			 <if test="user_addr != null">
+			 #{user_addr},
+			 </if>
+			 <if test="user_nickname != null">
+			 #{user_nickname},
+			 </if>
+			 #{user_type},
+			 #{user_rest},
+			 #{user_yn}
+		 )
+	</insert>
+	<select id="detail" parameterType="hashMap" resultType="com.toy.user.dto.UserDto">
+		select 
+			user_id,
+			user_pw,
+			user_name,
+			user_phone,
+			user_email,
+			user_addr,
+			user_type,
+			user_rest,
+			user_yn
+		from tc_user
+		where user_id = #{user_id}
+		and user_pw = #{user_pw}
+		and user_yn = 'Y'
+	</select>
+	<select id="totalCount" parameterType="hashMap" resultType="Integer">
+		select count(*) from tc_user
+	</select>
+</mapper>
