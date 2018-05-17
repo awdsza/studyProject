@@ -15,9 +15,7 @@
 	        <input type="email" class="form-control"  name="user_email" id="user_email" required="" autofocus="">
         </c:if>
         <button class="btn btn-lg btn-primary btn-block" onclick="javascript:document.forms['loginFrm'].submit();">로그인</button>
-        <c:if test="${user_cnt == 0}">
-        	<button class="btn btn-lg btn-primary btn-block" onclick="javascript:location.href='${pageContext.request.contextPath}/login/account'">회원가입</button>
-        </c:if>
+        <button class="btn btn-lg btn-primary btn-block" onclick="javascript:location.href='${pageContext.request.contextPath}/login/account'">회원가입</button>
       </form>
     </div>
 <!-- 		<input type="text" name="id"/> -->

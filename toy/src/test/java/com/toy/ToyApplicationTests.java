@@ -22,7 +22,7 @@ public class ToyApplicationTests {
 	    private DataSource ds; //작성
 	 @Autowired
 	    private SqlSessionFactory sqlSession; //작성
-	 @Autowired
+	 	@Autowired
 	 	private CodeMapper codeMapeer;
 	    @Test
 	    public void contextLoads() {
@@ -41,7 +41,7 @@ public class ToyApplicationTests {
 	        
 	        vo.setParent_code("BOR_TYPE");
 	        vo.setCode_title("게시판타입");
-	        codeMapeer.parentCodeInsert(vo);
+	        System.out.println(codeMapeer.listParentCode());
 	        
 	    }
 }
