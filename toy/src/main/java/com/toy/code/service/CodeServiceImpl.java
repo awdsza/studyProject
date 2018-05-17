@@ -1,5 +1,6 @@
 package com.toy.code.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,19 @@ public class CodeServiceImpl implements ICodeService {
 
 	@Override
 	public List<CodeDto> listParentCode() throws Exception {
-		// TODO Auto-generated method stub
 		return codeMapper.listParentCode();
 	}
 
 	@Override
 	public int insertChildCode(CodeDto paramDto) throws Exception {
-		// TODO Auto-generated method stub
 		return codeMapper.insertChildCode(paramDto);
+	}
+
+	@Override
+	public List<CodeDto> listChildCode(String paramCode) throws Exception {
+		HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("parent_code", paramCode);
+		return codeMapper.listChildCode(paramMap);
 	}
 
 }

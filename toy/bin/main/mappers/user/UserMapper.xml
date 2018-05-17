@@ -12,20 +12,19 @@
 			 user_name,
 		 </if>
 		 <if test="user_phone != null">
-		 user_phone,
+		 	user_phone,
 		 </if>
 		 <if test="user_email != null">
-		 user_email,
+		 	user_email,
 		 </if>
 		 <if test="user_addr != null">
-		 user_addr,
+		 	user_addr,
 		 </if>
-		 <if test="user_nickname != null">
-		 user_nickname,
-		 </if>
-		 user_type,
-		 user_rest,
-		 user_yn
+			user_type,
+			user_rest,
+			user_yn,
+			create_user_id,
+			update_user_id
 		 )
 		 values (
 			 #{user_id},
@@ -42,12 +41,11 @@
 			 <if test="user_addr != null">
 			 #{user_addr},
 			 </if>
-			 <if test="user_nickname != null">
-			 #{user_nickname},
-			 </if>
 			 #{user_type},
 			 #{user_rest},
-			 #{user_yn}
+			 #{user_yn},
+			 #{create_user_id},
+		 	 #{update_user_id}
 		 )
 	</insert>
 	<select id="detail" parameterType="hashMap" resultType="userDto">
@@ -63,8 +61,12 @@
 			user_yn
 		from tc_user
 		where user_id = #{user_id}
-		and user_pw = #{user_pw}
-		and user_yn = 'Y'
+		<if test="user_pw != null">
+			and user_pw = #{user_pw}
+		</if>
+		<if test="user_yn != null">
+			and user_yn = 'Y'
+		</if>
 	</select>
 	<select id="totalCount" parameterType="hashMap" resultType="Integer">
 		select count(*) from tc_user

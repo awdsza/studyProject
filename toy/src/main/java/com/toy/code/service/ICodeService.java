@@ -8,4 +8,5 @@ public interface ICodeService {
 	public int insertParentCode(CodeDto dto) throws Exception;
 	public int insertChildCode(CodeDto paramDto) throws Exception;
 	public List<CodeDto> listParentCode() throws Exception;
+	public List<CodeDto> listChildCode(String paramCode) throws Exception;
 }

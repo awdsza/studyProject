@@ -25,6 +25,7 @@ public class UserServiceImpl implements IUserService {
 		paramMap.put("user_id", paramUserId);
 		paramMap.put("user_pw",paramUserPw);
 		paramMap.put("user_email",paramUserEmail);
+		paramMap.put("use_yn", BaseKeyword.Y);
 		UserDto detail = null;
 		detail = userMapper.detail(paramMap);
 		if(detail == null){
@@ -63,7 +64,15 @@ public class UserServiceImpl implements IUserService {
 		}
 		return detail;
 	}
-
+	@Override
+	public UserDto detail(String paramUserId) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("user_id", paramUserId);
+		UserDto detail = null;
+		detail = userMapper.detail(paramMap);
+		return detail;
+	}
 	@Override
 	public List<UserDto> list() throws Exception {
 		return userMapper.list();
@@ -73,5 +82,21 @@ public class UserServiceImpl implements IUserService {
 	public int totalCount()  throws Exception{
 		return userMapper.totalCount();
 	}
+
+	@Override
+	public int insert(UserDto paramDto) throws Exception {
+		UserDto detail = null;
+		detail = detail(paramDto.getUser_id());
+		if(detail == null) return -1;
+		else{
+			paramDto.setUser_rest(BaseKeyword.N);
+			paramDto.setUser_yn(BaseKeyword.Y);
+			paramDto.setCreate_user_id(paramDto.getUser_id());
+			paramDto.setUpdate_user_id(paramDto.getUser_id());
+			return 0;
+		}
+	}
+
+	
 
 }
