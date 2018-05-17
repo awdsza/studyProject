@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.toy.user.mapper.UserMapper">
-	<insert id="insert" parameterType="com.toy.user.dto.UserDto">
+	<insert id="insert" parameterType="userDto">
 		insert into tc_user
 		(user_id,
 		 user_pw,
@@ -50,7 +50,7 @@
 			 #{user_yn}
 		 )
 	</insert>
-	<select id="detail" parameterType="hashMap" resultType="com.toy.user.dto.UserDto">
+	<select id="detail" parameterType="hashMap" resultType="userDto">
 		select 
 			user_id,
 			user_pw,

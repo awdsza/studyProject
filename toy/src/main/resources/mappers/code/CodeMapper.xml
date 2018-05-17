@@ -5,26 +5,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="com.toy.code.mapper.CodeMapper">
  
-    <insert id="insertParentCode" parameterType="com.toy.code.dto.CodeDto">
+    <insert id="insertParentCode" parameterType="codeDto">
         insert into tc_code_parents
             values
         (#{parent_code},#{code_title},now(),'system',now(),'system')
     </insert>
     
-    <insert id="insertChildCode" parameterType="com.toy.code.dto.CodeDto">
+    <insert id="insertChildCode" parameterType="codeDto">
         insert into tc_code_child
             values
         (#{parent_code},#{child_code},#{code_title},now(),'system',now(),'system')
     </insert>
-    <update id="deleteChildCode" parameterType="com.toy.code.dto.CodeDto">
+    <update id="deleteChildCode" parameterType="codeDto">
     delete from tc_code_child where child_code = #{child_code}
     </update>
     
- 	<select id="listParentCode" resultType="com.toy.code.dto.CodeDto">
+ 	<select id="listParentCode" resultType="codeDto">
  		select parent_code,code_title from tc_code_parents
  	</select>
  	
- 	<select id="listChildCode" resultType="com.toy.code.dto.CodeDto">
+ 	<select id="listChildCode" resultType="codeDto">
  		select child_code,code_title from tc_code_child where parent_code = #{parent_code}
  	</select>
 </mapper>
