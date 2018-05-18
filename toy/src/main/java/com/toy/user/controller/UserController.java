@@ -1,5 +1,7 @@
 package com.toy.user.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,7 @@ public class UserController {
 	@RequestMapping("/action/user/insert")
 	public ModelAndView insertUserAction(UserDto paramDto,ModelAndView mv) throws Exception{
 		userService.insert(paramDto);
+		mv.setViewName("base/login/login");
 		return mv;
 	};
 }

@@ -59,8 +59,6 @@ public class UserServiceImpl implements IUserService {
 				d.setUser_yn(BaseKeyword.Y);
 				d.setUser_email(paramUserEmail);
 			}
-		}else{
-			
 		}
 		return detail;
 	}
@@ -87,13 +85,13 @@ public class UserServiceImpl implements IUserService {
 	public int insert(UserDto paramDto) throws Exception {
 		UserDto detail = null;
 		detail = detail(paramDto.getUser_id());
-		if(detail == null) return -1;
+		if(detail != null) return -1;
 		else{
 			paramDto.setUser_rest(BaseKeyword.N);
 			paramDto.setUser_yn(BaseKeyword.Y);
 			paramDto.setCreate_user_id(paramDto.getUser_id());
 			paramDto.setUpdate_user_id(paramDto.getUser_id());
-			return 0;
+			return userMapper.insert(paramDto);
 		}
 	}
 

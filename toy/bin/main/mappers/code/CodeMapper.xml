@@ -16,10 +16,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             values
         (#{parent_code},#{child_code},#{code_title},now(),'system',now(),'system')
     </insert>
-    <update id="deleteChildCode" parameterType="codeDto">
-    delete from tc_code_child where child_code = #{child_code}
+    <update id="deleteChildCode" parameterType="hashMap">
+	    delete from tc_code_child 
+	    <where>
+	    	<if test="child_code != null">
+		    child_code = #{child_code}
+	    	</if>
+	    	<if test="parent_code != null">
+		    parent_code = #{parent_code}
+	    	</if>
+	    </where>
     </update>
-    
+    <update id="deleteParentCode" parameterType="hashMap">
+    	delete from tc_code_parents where parent_code = #{parent_code}
+    </update>
  	<select id="listParentCode" resultType="codeDto">
  		select parent_code,code_title from tc_code_parents
  	</select>

@@ -10,5 +10,5 @@
 <meta name="author" content="">
 <title>Toy Project</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
-<script src="${pageContext.request.contextPath}/resources/base/js/jquery-3.3.1.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/base/css/dashboard.css">
 </head>
