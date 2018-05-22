@@ -35,7 +35,7 @@
 						<tbody>
 								 <tr v-for="item in listParentCode">
 									<td>{{item.parent_code}}</td>
-									<td>{{vo.code_title}}</td>
+									<td>{{item.code_title}}</td>
 									<td><a href="javascript:void(0);" v-on:click="fnOnClickDeleteParentCode(item.parent_code)">코드 삭제</a></td>
 								</tr>
 							<tr>
