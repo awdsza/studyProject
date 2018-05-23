@@ -16,4 +16,5 @@ public class UserDto extends BaseDto{
 	private String user_rest;
 	private String user_yn;
 	private String user_nickname;
+	private String user_type_title;
 }

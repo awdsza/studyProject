@@ -1,5 +1,7 @@
 package com.toy;
 
+import java.util.HashMap;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,12 +20,10 @@ import com.toy.code.mapper.CodeMapper;
 @WebAppConfiguration
 public class ToyApplicationTests {
 
-	 @Autowired
-	    private DataSource ds; //작성
-	 @Autowired
-	    private SqlSessionFactory sqlSession; //작성
 	 	@Autowired
-	 	private CodeMapper codeMapeer;
+	    private DataSource ds; //작성
+	 	@Autowired
+	    private SqlSessionFactory sqlSession; //작성
 	    @Test
 	    public void contextLoads() {
 	    }
@@ -35,13 +35,11 @@ public class ToyApplicationTests {
 	        
 	    }
 	    @Test
-	    public void testMapper() throws Exception{//작성
-	        
-	        CodeDto vo = new CodeDto();
-	        
-	        vo.setParent_code("BOR_TYPE");
-	        vo.setCode_title("게시판타입");
-	        System.out.println(codeMapeer.listParentCode());
-	        
-	    }
+	    public void pager(){
+	    	int pageNum = 2;
+	    	int pageSize = 5;
+			int startPage = ((pageNum-1) * pageSize) + 1;
+			int endPage = pageNum* pageSize;
+			System.out.println("startPage :: " + startPage +" endPage :: " + endPage);
+		}
 }

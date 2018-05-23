@@ -6,10 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.toy.base.BaseService;
 import com.toy.code.dto.CodeDto;
 import com.toy.code.mapper.CodeMapper;
 @Service("codeService")
-public class CodeServiceImpl implements ICodeService {
+public class CodeServiceImpl extends BaseService implements ICodeService {
 	@Autowired
  	private CodeMapper codeMapper;
 	

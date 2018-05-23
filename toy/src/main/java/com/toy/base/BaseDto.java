@@ -10,4 +10,5 @@ public class BaseDto {
 	private Date create_date;
 	private String update_user_id;
 	private Date update_date;
+	private int row_num;
 }

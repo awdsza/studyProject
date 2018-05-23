@@ -1,5 +1,7 @@
 package com.toy.viewmodel;
 
+import java.util.List;
+
 import com.toy.base.BaseViewModel;
 import com.toy.user.dto.UserDto;
 
@@ -9,6 +11,7 @@ public class UserViewModel extends BaseViewModel{
 	private String paramUserId;
 	private String paramUserPw;
 	private UserDto detail;
+	private List<UserDto> listUser;
 	
 	
 }

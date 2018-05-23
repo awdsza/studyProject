@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.toy.base.BaseKeyword;
+import com.toy.base.BaseService;
 import com.toy.code.dto.CodeDto;
 import com.toy.code.service.ICodeService;
 import com.toy.user.dto.UserDto;
 import com.toy.user.mapper.UserMapper;
 
 @Service("userService")
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl extends BaseService implements IUserService{
 	@Autowired
 	private UserMapper userMapper;
 	@Autowired
@@ -93,6 +94,19 @@ public class UserServiceImpl implements IUserService {
 			paramDto.setUpdate_user_id(paramDto.getUser_id());
 			return userMapper.insert(paramDto);
 		}
+	}
+	@Override
+	public List<UserDto> list(String paramUserId,int pageNum, int pageSize) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", paramUserId);
+		pager(paramMap,pageNum,pageSize);
+		return userMapper.list(paramMap);
+	}
+	@Override
+	public int totalCount(String paramUserId) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", paramUserId);
+		return userMapper.totalCount(paramMap);
 	}
 
 	

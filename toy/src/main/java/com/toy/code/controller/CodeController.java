@@ -20,9 +20,7 @@ public class CodeController {
  	private ICodeService codeService;
 	 @RequestMapping("/code/parent/list")
 	 public ModelAndView board() throws Exception{
-		 List<CodeDto> listParentCode = null;
-			listParentCode = codeService.listParentCode();
-        return new ModelAndView("base/code/list","parent",listParentCode);
+        return new ModelAndView("base/code/list");
     }
 	 @RequestMapping(value = "/action/code/parent/list", method = RequestMethod.POST)
 	 public CodeViewModel listParentCodeAction(@RequestBody CodeViewModel vm) throws Exception{

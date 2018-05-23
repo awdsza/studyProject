@@ -4,12 +4,12 @@
 <%@ include file="../include/header.jsp" %>
 <body>
 	<%@ include file="../include/top.jsp" %>
-	<div class="container-fluid" id="codeController">
+	<div class="container-fluid" id="codeController" v-cloak>
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Code관리</a></li>
-					<li><a href="#">사용자관리</a></li>
+					<li class="active"><a href="${pageContext.request.contextPath}/code/parent/list">Code관리</a></li>
+					<li><a href="${pageContext.request.contextPath}/user/list">사용자관리</a></li>
 					<li><a href="#">Analytics</a></li>
 					<li><a href="#">Export</a></li>
 				</ul>

@@ -10,4 +10,6 @@ public interface UserMapper {
 	public List<UserDto> list();
 	public int totalCount();
 	public int insert(UserDto paramDto) throws Exception;
+	public int totalCount(HashMap<String,Object> paramMap);
+	public List<UserDto> list(HashMap<String,Object> paramMap);
 }

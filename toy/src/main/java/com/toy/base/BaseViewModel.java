@@ -1,5 +1,10 @@
 package com.toy.base;
 
-public class BaseViewModel {
+import lombok.Data;
 
+@Data
+public class BaseViewModel {
+	private int totalCount;
+	private int pageNum;
+	private int pageSize;
 }

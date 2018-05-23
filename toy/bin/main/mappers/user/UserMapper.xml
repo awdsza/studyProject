@@ -69,6 +69,84 @@
 		</if>
 	</select>
 	<select id="totalCount" parameterType="hashMap" resultType="Integer">
-		select count(*) from tc_user
+		with usertable as(
+		select 
+				user_id,
+				user_name,
+				user_phone,
+				user_email,
+				user_type,
+				user_rest,
+				user_yn,
+				create_date,
+				user_addr
+			from tc_user
+			<where>
+				<if test="user_id != null">
+					where user_id like concat( '%', #{user_id},'%')
+				</if>
+			</where>
+		)
+			select
+				count(*)
+				from
+			(
+				select 
+					a.user_id,
+					a.user_name,
+					a.user_phone,
+					a.user_email,
+					a.user_type,
+					b.code_title,
+					a.user_rest,
+					a.user_yn,
+					a.create_date,
+					a.user_addr
+					from usertable a left join tc_code_child b
+					on a.user_type = b.child_code
+			) a
+	</select>
+	<select id="list" parameterType="hashMap" resultType="userDto">
+		with usertable as(
+		select 
+				user_id,
+				user_name,
+				user_phone,
+				user_email,
+				user_type,
+				user_rest,
+				user_yn,
+				create_date,
+				user_addr
+			from tc_user
+			<where>
+				<if test="user_id != null">
+				where user_id like concat( '%', #{user_id},'%')
+				</if>
+			</where>
+		)
+		select *
+		from(
+			select
+				@rownum := @rownum + 1 as row_num, 
+				a.*
+				from
+			(
+				select 
+					a.user_id,
+					a.user_name,
+					a.user_phone,
+					a.user_email,
+					a.user_type,
+					b.code_title as user_type_title,
+					a.user_rest,
+					a.user_yn,
+					a.create_date,
+					a.user_addr
+					from usertable a left join tc_code_child b
+					on a.user_type = b.child_code
+					order by user_id desc
+			) a inner join (select @rownum :=0) b
+		) a where row_num between #{startPage} and #{endPage}
 	</select>
 </mapper>

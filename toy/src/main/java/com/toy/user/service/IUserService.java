@@ -10,4 +10,6 @@ public interface IUserService {
 	public int insert(UserDto paramDto) throws Exception;
 	public List<UserDto> list() throws Exception;
 	public int totalCount() throws Exception;
+	public List<UserDto> list(String paramUserId,int pageNum, int pageSize) throws Exception;
+	public int totalCount(String paramUserId) throws Exception;
 }
