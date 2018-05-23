@@ -10,4 +10,7 @@ public interface CodeMapper {
 	public int insertChildCode(CodeDto paramDto) throws Exception;
 	public List<CodeDto> listParentCode() throws Exception;
 	public List<CodeDto> listChildCode(HashMap<String,Object> paramMap) throws Exception; 
+	public int deleteParentCode(HashMap<String,Object> paramMap) throws Exception; 
+	public int deleteChildCode(HashMap<String,Object> paramMap) throws Exception ;
+	
 }

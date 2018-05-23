@@ -4,7 +4,7 @@
 <%@ include file="../include/header.jsp" %>
 <body>
 	<%@ include file="../include/top.jsp" %>
-	<div class="container-fluid">
+	<div class="container-fluid" id="codeController">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
@@ -21,7 +21,7 @@
 					<li><a href="">More navigation</a></li>
 				</ul> -->
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="codeController">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">코드관리</h1>
 				<div class="table-responsive col-sm-6">
 					<table class="table table-striped">
@@ -34,8 +34,8 @@
 						</thead>
 						<tbody>
 								 <tr v-for="item in listParentCode">
-									<td>{{item.parent_code}}</td>
-									<td>{{vo.code_title}}</td>
+									<td><a href="javascript:void(0);" v-on:click="fnOnClickListChildCode(item.parent_code)">{{item.parent_code}}</a></td>
+									<td>{{item.code_title}}</td>
 									<td><a href="javascript:void(0);" v-on:click="fnOnClickDeleteParentCode(item.parent_code)">코드 삭제</a></td>
 								</tr>
 							<tr>
@@ -58,7 +58,7 @@
 						<tbody>
 							<tr v-for="item in listChildCode">
 								<td>{{item.child_code}}</td>
-								<td>{{vo.code_title}}</td>
+								<td>{{item.code_title}}</td>
 								<td><a href="javascript:void(0);" v-on:click="fnOnClickDeleteChildCode(item.child_code)">코드 삭제</a></td>
 							</tr>
 							<tr>

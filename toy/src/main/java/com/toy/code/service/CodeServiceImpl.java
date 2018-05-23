@@ -36,4 +36,25 @@ public class CodeServiceImpl implements ICodeService {
 		return codeMapper.listChildCode(paramMap);
 	}
 
+	@Override
+	public int deleteParentCode(String paramParentCode) throws Exception {
+		HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("parent_code", paramParentCode);
+		return codeMapper.deleteParentCode(paramMap);
+	}
+
+	@Override
+	public int deleteChildCodeByParentCode(String paramParentCode) throws Exception {
+		HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("parent_code", paramParentCode);
+		return codeMapper.deleteChildCode(paramMap);
+	}
+	@Override
+	public int deleteChildCode(String paramChildCode) throws Exception {
+		HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("child_code", paramChildCode);
+		return codeMapper.deleteChildCode(paramMap);
+	}
+
+
 }

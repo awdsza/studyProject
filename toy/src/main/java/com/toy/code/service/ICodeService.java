@@ -9,4 +9,7 @@ public interface ICodeService {
 	public int insertChildCode(CodeDto paramDto) throws Exception;
 	public List<CodeDto> listParentCode() throws Exception;
 	public List<CodeDto> listChildCode(String paramCode) throws Exception;
+	public int deleteParentCode(String paramParentCode) throws Exception;
+	public int deleteChildCodeByParentCode(String paramParentCode) throws Exception;
+	public int deleteChildCode(String paramChildCode) throws Exception;
 }
