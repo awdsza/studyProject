@@ -22,7 +22,7 @@
 							<label>사용자 ID</label>
 						</div>
 						<div class="col-md-11 xdisplay_inputx form-group has-feedback" style="width:200px;">
-							<input type="text" class="form-control has-feedback-left" placeholder="사용자ID" aria-describedby="inputSuccess2Status1" style="width:200px;">
+							<input type="text" class="form-control has-feedback-left" v-model="paramUserId" placeholder="사용자ID" aria-describedby="inputSuccess2Status1" style="width:200px;">
 							<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status1" class="sr-only">(success)</span>
 						</div>
 					</div>
@@ -31,13 +31,13 @@
 							<label>사용자 이름</label>
 						</div>
 						<div class="col-md-11 xdisplay_inputx form-group has-feedback" style="width:200px;">
-							<input type="text" class="form-control has-feedback-left" placeholder="사용자이름" aria-describedby="inputSuccess2Status1" style="width:200px;">
+							<input type="text" class="form-control has-feedback-left" v-model="paramUserName" v-model="paramUserId"placeholder="사용자이름" aria-describedby="inputSuccess2Status1" style="width:200px;">
 							<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status1" class="sr-only">(success)</span>
 						</div>
 					</div>
 					<div style="float:left; margin-left:50px;">
 						<div style="float:left; margin-left:25px;">
-  							<input type=" button" class="btn btn-success" value="검색">
+  							<input type=" button" class="btn btn-success" value="검색" v-on:click="fnOnClickSearch()">
 						</div>
 					</div>
 				</div>

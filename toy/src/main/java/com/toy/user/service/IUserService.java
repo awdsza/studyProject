@@ -11,7 +11,9 @@ public interface IUserService {
 	public List<UserDto> list() throws Exception;
 	public int totalCount() throws Exception;
 	public List<UserDto> list(String paramUserId,int pageNum, int pageSize) throws Exception;
+	public List<UserDto> list(String paramUserId,String paramUserName,int pageNum, int pageSize) throws Exception;
 	public int totalCount(String paramUserId) throws Exception;
+	public int totalCount(String paramUserId,String paraUserName) throws Exception;
 	public int updateRestYN(UserDto paramDto) throws Exception;
 	public int updateUseYN(UserDto paramDto) throws Exception;
 	public int updateRestYN(String paramUserId,String paramRestYN) throws Exception;

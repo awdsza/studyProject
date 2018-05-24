@@ -83,7 +83,10 @@
 			from tc_user
 			<where>
 				<if test="user_id != null">
-					where user_id like concat( '%', #{user_id},'%')
+					and user_id like concat( '%', #{user_id},'%')
+				</if>
+				<if test="user_name != null ">
+					and user_name like concat( '%', #{user_name},'%')
 				</if>
 			</where>
 		)
@@ -121,7 +124,10 @@
 			from tc_user
 			<where>
 				<if test="user_id != null">
-				where user_id like concat( '%', #{user_id},'%')
+					and user_id like concat( '%', #{user_id},'%')
+				</if>
+				<if test="user_name != null ">
+					and user_name like concat( '%', #{user_name},'%')
 				</if>
 			</where>
 		)

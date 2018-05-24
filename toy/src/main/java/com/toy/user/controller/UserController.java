@@ -27,8 +27,8 @@ public class UserController {
     }
 	@RequestMapping("/action/user/list")
 	public UserViewModel listUserAction(@RequestBody UserViewModel vm, ModelAndView mv) throws Exception{
-		vm.setTotalCount(userService.totalCount(vm.getParamUserId()));
-		vm.setListUser(userService.list(vm.getParamUserId(),vm.getPageNum(),vm.getPageSize()));
+		vm.setTotalCount(userService.totalCount(vm.getParamUserId(),vm.getParamUserName()));
+		vm.setListUser(userService.list(vm.getParamUserId(),vm.getParamUserName(),vm.getPageNum(),vm.getPageSize()));
 		return vm;
 	};
 	@RequestMapping("/action/user/rest/update")

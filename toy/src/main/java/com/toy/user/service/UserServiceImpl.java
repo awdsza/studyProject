@@ -130,6 +130,21 @@ public class UserServiceImpl extends BaseService implements IUserService{
 		paramMap.put("user_yn", paramUseYN);
 		return 0;
 	}
+	@Override
+	public List<UserDto> list(String paramUserId, String paramUserName, int pageNum, int pageSize) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", paramUserId);
+		paramMap.put("user_name", paramUserName);
+		pager(paramMap,pageNum,pageSize);
+		return userMapper.list(paramMap);
+	}
+	@Override
+	public int totalCount(String paramUserId, String paraUserName) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", paramUserId);
+		paramMap.put("user_name", paraUserName);
+		return userMapper.totalCount(paramMap);
+	}
 
 	
 

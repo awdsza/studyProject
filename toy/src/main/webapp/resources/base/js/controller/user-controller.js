@@ -5,6 +5,7 @@ var user_vue = new Vue({
 		el : "#userController",
 		data : {
 			paramUserId:'',
+			paramUserName : '',
 			listUser : [],
 			pagerObj : {
 				pagerNums : [],
@@ -15,7 +16,9 @@ var user_vue = new Vue({
 				startPageNum : 1,
 				startBlockNum : 1,
 				endBlockNum : 1,
-				blockSize : 10
+				blockSize : 10,
+				user_id : '',
+				user_name : ''
 			}
 		},
 		mixins: [mixIn],
@@ -23,23 +26,16 @@ var user_vue = new Vue({
 			fnListUser : function(pageNum){
 				axios.post(
 						_context+'/action/user/list',
-						{"paramUserId" : this.paramUserId == '' ? null : this.paramUserId,
+						{"paramUserId" : this.pagerObj.user_id == '' ? null : this.pagerObj.user_id,
+						 "paramUserName" : this.pagerObj.user_name == '' ? null : this.pagerObj.user_name,
 						 "pageNum" : pageNum == null ?  1 : pageNum,
 						 "pageSize" : 10
 						}
 				).then(function (result) {
 					this.listUser = result.data.listUser;
-					this.pagerObj = {
-							pagerNums : [],
-							totalCount : result.data.totalCount == 0 ? 1 : result.data.totalCount,
-							pageSize : 10,
-							pageNum : pageNum == null ?  1 : pageNum,
-							endPageNum : 1,
-							startPageNum : 1,
-							startBlockNum : 1,
-							endBlockNum : 1,
-							blockSize : 10
-					};
+					this.pagerObj.totalCount = result.data.totalCount == 0 ? 1 : result.data.totalCount;
+					this.pagerObj.pageSize = 10;
+					this.pagerObj.pageNum = pageNum == null ?  1 : pageNum;
 					this.setPager(this.pagerObj);
 			    }.bind(this))
 			    .catch(function (error) {
@@ -72,11 +68,16 @@ var user_vue = new Vue({
 			        console.log(error.message);
 			    });
 			},
+			fnOnClickSearch : function(){
+				this.pagerObj.user_id = this.paramUserId;
+				this.pagerObj.user_name = this.paramUserName;
+				this.fnListUser(1);
+			},
 			fnOnClickPager : function(pageNum){
 				this.fnListUser(pageNum);
 			}
 		},
 		mounted : function(){
-			this.fnListUser();
+			this.fnListUser(1,null,null);
 		}
 	});
