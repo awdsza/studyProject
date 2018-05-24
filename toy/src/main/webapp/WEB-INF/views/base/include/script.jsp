@@ -12,3 +12,4 @@
 	<script src="${pageContext.request.contextPath}/resources/base/js/base-vue.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="${pageContext.request.contextPath}/resources/base/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/base/js/controller/template/pager-template.js"></script>

@@ -1,10 +1,12 @@
-var listUser = [];
-var noaa_vue = new Vue({
+//import pager from './template/pager-template.js';
+
+var pager_component = Vue.component('base-pager');
+var user_vue = new Vue({
 		el : "#userController",
 		data : {
 			paramUserId:'',
-			listUser : listUser,
-			pager : {
+			listUser : [],
+			pagerObj : {
 				pagerNums : [],
 				totalCount : 0,
 				pageSize : 10,
@@ -14,7 +16,7 @@ var noaa_vue = new Vue({
 				startBlockNum : 1,
 				endBlockNum : 1,
 				blockSize : 10
-			},
+			}
 		},
 		mixins: [mixIn],
 		methods:{
@@ -27,19 +29,44 @@ var noaa_vue = new Vue({
 						}
 				).then(function (result) {
 					this.listUser = result.data.listUser;
-					this.pager.pagerNums = [];
-					this.pager.totalCount = result.data.totalCount == 0 ? 1 : result.data.totalCount;
-					this.pager.pageNum = pageNum == null ?  1 : pageNum,
-					this.pager.pageSize = 10;
-					var pageCnt = Math.trunc((result.data.totalCount / 10) + (result.data.totalCount % 10 == 0 ? 0 : 1));
-					this.pager.endPageNum = pageCnt;
-					
-					this.pager.startBlockNum = this.pager.pageNum <= this.pager.blockSize ? 1 : (this.pager.blockSize * Math.trunc((this.pager.pageNum -1 )/ this.pager.blockSize)) + 1 ;
-					this.pager.endBlockNum = this.pager.pageNum >= this.pager.startBlockNum ? this.pager.endPageNum :  this.pager.startBlockNum + this.pager.blockSize -1;
-					
-					for(var i = this.pager.startBlockNum ; i<=this.pager.endBlockNum ; i++){
-						this.pager.pagerNums.push(i);
-					}
+					this.pagerObj = {
+							pagerNums : [],
+							totalCount : result.data.totalCount == 0 ? 1 : result.data.totalCount,
+							pageSize : 10,
+							pageNum : pageNum == null ?  1 : pageNum,
+							endPageNum : 1,
+							startPageNum : 1,
+							startBlockNum : 1,
+							endBlockNum : 1,
+							blockSize : 10
+					};
+					this.setPager(this.pagerObj);
+			    }.bind(this))
+			    .catch(function (error) {
+			        console.log(error.message);
+			    });
+			},
+			fnOnClickRestYn : function(item,yn){
+				item.user_rest = yn;
+				axios.post(
+						_context+'/action/user/rest/update',
+						{
+							"detail" : item,
+						}
+				).then(function (result) {
+			    }.bind(this))
+			    .catch(function (error) {
+			        console.log(error.message);
+			    });
+			},
+			fnOnClickUseYn : function(item,yn){
+				item.user_yn = yn;
+				axios.post(
+						_context+'/action/user/use/update',
+						{
+								"detail" : item,
+						}
+				).then(function (result) {
 			    }.bind(this))
 			    .catch(function (error) {
 			        console.log(error.message);
@@ -51,9 +78,5 @@ var noaa_vue = new Vue({
 		},
 		mounted : function(){
 			this.fnListUser();
-		},
-		created: function(){
-		    axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-		    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 		}
 	});

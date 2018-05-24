@@ -149,4 +149,15 @@
 			) a inner join (select @rownum :=0) b
 		) a where row_num between #{startPage} and #{endPage}
 	</select>
+	<update id="update" parameterType="userDto">
+		update tc_user set
+		<if test="user_yn != null">
+			user_yn = #{user_yn},
+		</if>
+		<if test="user_rest != null">
+			user_rest = #{user_rest},
+		</if>
+		update_date = now()
+		where user_id = #{user_id}
+	</update>
 </mapper>

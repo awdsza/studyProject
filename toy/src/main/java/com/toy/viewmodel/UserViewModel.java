@@ -9,9 +9,8 @@ import lombok.Data;
 @Data
 public class UserViewModel extends BaseViewModel{
 	private String paramUserId;
+	private String paramUserName;
 	private String paramUserPw;
 	private UserDto detail;
 	private List<UserDto> listUser;
-	
-	
 }

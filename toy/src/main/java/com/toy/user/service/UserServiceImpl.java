@@ -108,6 +108,28 @@ public class UserServiceImpl extends BaseService implements IUserService{
 		paramMap.put("user_id", paramUserId);
 		return userMapper.totalCount(paramMap);
 	}
+	@Override
+	public int updateRestYN(UserDto paramDto) throws Exception {
+		return userMapper.update(paramDto);
+	}
+	@Override
+	public int updateUseYN(UserDto paramDto) throws Exception {
+		return userMapper.update(paramDto);
+	}
+	@Override
+	public int updateRestYN(String paramUserId, String paramRestYN) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", paramUserId);
+		paramMap.put("user_rest", paramRestYN);
+		return 0;
+	}
+	@Override
+	public int updateUseYN(String paramUserId, String paramUseYN) throws Exception {
+		HashMap<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("user_id", paramUserId);
+		paramMap.put("user_yn", paramUseYN);
+		return 0;
+	}
 
 	
 

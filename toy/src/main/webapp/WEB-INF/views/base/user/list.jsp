@@ -16,19 +16,32 @@
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">사용자관리</h1>
-				<!-- <div>
-					<div>
-						<label>아이디</label>
+				<div>
+					<div style="float:left;">
+						<div style="float:left; margin-top:5px;">
+							<label>사용자 ID</label>
+						</div>
+						<div class="col-md-11 xdisplay_inputx form-group has-feedback" style="width:200px;">
+							<input type="text" class="form-control has-feedback-left" placeholder="사용자ID" aria-describedby="inputSuccess2Status1" style="width:200px;">
+							<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status1" class="sr-only">(success)</span>
+						</div>
 					</div>
-					<div class="col-md-6 xdisplay_inputx form-group has-feedback" style="width:200px; margin-left:10px;">
-						<input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="아이디" aria-describedby="inputSuccess2Status2"  v-model="paramUserId">
-						<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> 
-						<span id="inputSuccess2Status2" class="sr-only">(success)</span>
+					<div style="float:left; margin-left:50px;">
+						<div style="float: left; margin-top:5px;">
+							<label>사용자 이름</label>
+						</div>
+						<div class="col-md-11 xdisplay_inputx form-group has-feedback" style="width:200px;">
+							<input type="text" class="form-control has-feedback-left" placeholder="사용자이름" aria-describedby="inputSuccess2Status1" style="width:200px;">
+							<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status1" class="sr-only">(success)</span>
+						</div>
 					</div>
-					<div style="float:left; margin-left:25px;">
-							<input type="button" class="btn btn-success">검색
+					<div style="float:left; margin-left:50px;">
+						<div style="float:left; margin-left:25px;">
+  							<input type=" button" class="btn btn-success" value="검색">
+						</div>
 					</div>
-				</div> -->
+				</div>
+				<div class="clearfix"></div>
 				<div class="table-responsive">
 					<table class="table table-striped">
 						<thead>
@@ -47,20 +60,28 @@
 								<td>{{item.user_name}}</td>
 								<td>{{item.user_email}}</td>
 								<td>{{item.user_type_title}}</td>
-								<td>{{item.user_rest}}</td>
-								<td>{{item.user_yn}}</td>
+								<td>
+									<div class="btn-group  btn-group-xs">
+			                        	<button class="btn btn-default" v-bind:class="{'btn-info':item.user_rest=='Y'}" type="button" v-on:click="fnOnClickRestYn(item,'Y')">&nbsp; 휴면계정&nbsp;</button>
+			                        	<button class="btn btn-default" v-bind:class="{'btn-danger':item.user_rest=='N'}" type="button" v-on:click="fnOnClickRestYn(item,'N')">활동계정</button>
+									</div>
+								</td>
+								<td>
+									<div class="btn-group  btn-group-xs">
+			                        	<button class="btn btn-default" v-bind:class="{'btn-info':item.user_yn=='Y'}" type="button" v-on:click="fnOnClickUseYn(item,'Y')">&nbsp; 사용&nbsp;</button>
+			                        	<button class="btn btn-default" v-bind:class="{'btn-danger':item.user_yn=='N'}" type="button" v-on:click="fnOnClickUseYn(item,'N')">미사용</button>
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div>
-					<div class="btn-group">
-						<a class="btn btn-default" v-on:click="fnOnClickPager(pager.startPageNum)" >&lt;</a>
-<!-- 						ngRepeat: item in pager.pagerNums -->
-						<a class="btn btn-default" v-for="item in pager.pagerNums" v-bind:class="{'btn-info': item == pager.pageNum}" v-on:click="fnOnClickPager(item)">{{item}}</a>
-<!-- 						end ngRepeat: item in pager.pagerNums -->
-						<a class="btn btn-default"  v-on:click="fnOnClickPager(pager.endPageNum)">&gt;</a>
-					</div>
+				<div class="btn-group">
+					<a class="btn btn-default" v-on:click="fnOnClickPager(pagerObj.startPageNum)" >&lt;</a>
+				<!-- 						ngRepeat: item in pager.pagerNums -->
+					<a class="btn btn-default" v-for="item in pagerObj.pagerNums" v-bind:class="{'btn-info': item == pagerObj.pageNum}" v-on:click="fnOnClickPager(item)">{{item}}</a>
+				<!-- 						end ngRepeat: item in pager.pagerNums -->
+					<a class="btn btn-default"  v-on:click="fnOnClickPager(pagerObj.endPageNum)">&gt;</a>
 				</div>
 			</div>
 		</div>
