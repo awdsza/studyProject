@@ -4,7 +4,7 @@
 - Update Date : 2018.05.24
 
 ## Intro
-간단한 게시판 Project를 만드는 중입니다. 공부하기 위한 평범한 게시판입니다.
+공부하기 위한 간단한 Project입니다.
 ## 수정내역
 - 2018.05.17</br>
   1. Gradle 기반의 Spring-boot 프로젝트 생성
