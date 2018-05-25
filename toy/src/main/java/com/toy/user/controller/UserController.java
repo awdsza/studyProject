@@ -31,6 +31,11 @@ public class UserController {
 		vm.setListUser(userService.list(vm.getParamUserId(),vm.getParamUserName(),vm.getPageNum(),vm.getPageSize()));
 		return vm;
 	};
+	@RequestMapping("/action/user/check/id")
+	public UserViewModel idCheckUserAction(@RequestBody UserViewModel vm, ModelAndView mv) throws Exception{
+		vm.setDetail(userService.detail(vm.getParamUserId()));
+		return vm;
+	};
 	@RequestMapping("/action/user/rest/update")
 	public UserViewModel updateRestUserAction(@RequestBody UserViewModel vm, ModelAndView mv) throws Exception{
 		userService.updateRestYN(vm.getDetail());

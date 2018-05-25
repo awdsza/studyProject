@@ -29,12 +29,14 @@ public class LoginController {
 	}
 	@RequestMapping(value = "/action/login", method = RequestMethod.POST)
 	public ModelAndView loginAction(ModelAndView mv,HttpSession session, UserViewModel vm) throws Exception{
-	//public UserViewModel loginAction(ModelAndView mv,HttpSession session,@RequestBody UserViewModel vm) throws Exception{
 		UserDto user = null;
 		user = userService.detail(vm.getParamUserId(),vm.getParamUserPw(),null);
-		session.setAttribute("user", user);
-		mv.setViewName("base/main");
-		//return vm;
+		if(user != null){
+			session.setAttribute("user", user);
+			mv.setViewName("base/code/list");
+		}else{
+			mv.setViewName("base/login/login");
+		}
 		return mv;
 	}
 	@RequestMapping("/login/account")
