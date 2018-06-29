@@ -6,6 +6,9 @@ var mixIn = {
 	    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 	},
 	methods : {
+		fnOnClickPager : function(num){
+			this.callback(num);	
+		},
 		setPager:function(_pager){
 			_pager.pagerNums = [];
 			var pageCnt = Math.ceil(_pager.totalCount / _pager.blockSize );
@@ -21,19 +24,3 @@ var mixIn = {
 		}
 	}
 };
-var bus = new Vue();
-//var pager = require("./controller/template/pager-template.js");
-/*var noaa_vue = new Vue({
-	el : "html",
-	data : {
-	},
-	methods:{
-	},
-	mounted : function(){
-		this.fnListUser();
-	},
-	created: function(){
-	    axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-	    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-	}
-});*/
