@@ -16,10 +16,12 @@ export default {
   props: ["pass"],
   methods: {
     fnOnClickPager(num) {
-      this.pass.callback(num);
+      this.pass.fnOnClickNum(num);
     },
 
-    setPager(_pager) {
+    setPager(_vue) {
+      let _pager = _vue.pagerObj;
+      _pager.models = _vue;
       _pager.pagerNums = [];
 
       var pageCnt = Math.ceil(_pager.totalCount / _pager.blockSize);
@@ -41,7 +43,7 @@ export default {
       for (var i = _pager.startBlockNum; i <= _pager.endBlockNum; i++) {
         _pager.pagerNums.push(i);
       }
-      console.log(_pager);
+
       return _pager;
     }
   }

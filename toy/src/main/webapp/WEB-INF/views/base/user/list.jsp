@@ -8,19 +8,19 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a href="${pageContext.request.contextPath}/code/parent/list">Code°ü¸®</a></li>
-					<li class="active"><a href="/${pageContext.request.contextPath}/user/list">»ç¿ëÀÚ°ü¸®</a></li>
-					<li><a href="#">°Ô½ÃÆÇ</a></li>
+					<li><a href="${pageContext.request.contextPath}/code/parent/list">Codeê´€ë¦¬</a></li>
+					<li class="active"><a href="/${pageContext.request.contextPath}/user/list">ì‚¬ìš©ìžê´€ë¦¬</a></li>
+					<li><a href="#">ê²Œì‹œíŒ</a></li>
 					<li><a href="#">Export</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">»ç¿ëÀÚ°ü¸®</h1>
+				<h1 class="page-header">ì‚¬ìš©ìžê´€ë¦¬</h1>
 				<div class="row" v-show="isShowUpdatePage">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<div class="col-md-9 col-sm-9 col-xs-10 "><h5>»ç¿ëÀÚ Ãß°¡/¼öÁ¤({{detail.user_id}})  <small>½Ã½ºÅÛ »ç¿ëÀÚ¸¦ Ãß°¡ÇÏ°Å³ª ¼öÁ¤ÇÕ´Ï´Ù.</small></h5></div>
+								<div class="col-md-9 col-sm-9 col-xs-10 "><h5>ì‚¬ìš©ìž ì¶”ê°€/ìˆ˜ì •({{detail.user_id}})  <small>ì‹œìŠ¤í…œ ì‚¬ìš©ìžë¥¼ ì¶”ê°€í•˜ê±°ë‚˜ ìˆ˜ì •í•©ë‹ˆë‹¤.</small></h5></div>
 								<div class="col-md-3 col-sm-3 col-xs-2 ">
 									<ul class="nav pull-right panel_toolbox ">				
 										<li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -32,22 +32,22 @@
 								<br>
 								<form class="form-horizontal form-label-left input_mask ng-pristine">
 									<div class="col-md-9 col-sm-9 col-xs-7 form-group has-feedback" v-show="!isUpdate">
-										<input type="text" class="form-control has-feedback-left" id="inputSuccess1" placeholder="¾ÆÀÌµð">
+										<input type="text" class="form-control has-feedback-left" id="inputSuccess1" placeholder="ì•„ì´ë””">
 										<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 									</div>
 									<div class="col-md-3 col-sm-3 col-xs-3"  v-show="!isUpdate">
-										<button type="button" class="btn btn-default btn-sm">¾ÆÀÌµð Áßº¹È®ÀÎ</button>
+										<button type="button" class="btn btn-default btn-sm">ì•„ì´ë”” ì¤‘ë³µí™•ì¸</button>
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-										<input type="password" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ºñ¹Ð¹øÈ£">
+										<input type="password" class="form-control has-feedback-left" id="inputSuccess2" placeholder="ë¹„ë°€ë²ˆí˜¸">
 										<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
 									</div>
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-										<input type="password" class="form-control has-feedback-left" id="inputSuccess3" placeholder="ºñ¹Ð¹øÈ£ È®ÀÎ">
+										<input type="password" class="form-control has-feedback-left" id="inputSuccess3" placeholder="ë¹„ë°€ë²ˆí˜¸ í™•ì¸">
 										<span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
 									</div>
 									<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-										<input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="ÀÌ¸§" v-model="detail.user_name">
+										<input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="ì´ë¦„" v-model="detail.user_name">
 										<span class="fa fa-credit-card form-control-feedback left" aria-hidden="true"></span>
 									</div>
 									<div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
@@ -67,11 +67,10 @@
 										<input type="number" class="form-control" id="inputSuccess8" placeholder="Phone3" v-model="detail.user_phone3">
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12">»ç¿ëÀÚ À¯Çü</label>
+										<label class="control-label col-md-3 col-sm-3 col-xs-12">ì‚¬ìš©ìž ìœ í˜•</label>
 										<div class="col-md-9 col-sm-9 col-xs-12">
 											<select class="form-control ng-pristine" v-model="detail.user_type">
 												<option v-for="item in listUserType" :value="item.child_code">{{item.code_title}}</option>
-					                          	<!-- ngRepeat: code in listUserTypeCodes -->
 											</select>
 										</div>
 									</div>				
@@ -93,25 +92,25 @@
 				<div>
 					<div style="float:left;">
 						<div style="float:left; margin-top:5px;">
-							<label>»ç¿ëÀÚ ID</label>
+							<label>ì‚¬ìš©ìž ID</label>
 						</div>
 						<div class="col-md-11 xdisplay_inputx form-group has-feedback" style="width:200px;">
-							<input type="text" class="form-control has-feedback-left" v-model="paramUserId" placeholder="»ç¿ëÀÚID" aria-describedby="inputSuccess2Status1" style="width:200px;">
+							<input type="text" class="form-control has-feedback-left" v-model="paramUserId" placeholder="ì‚¬ìš©ìžID" aria-describedby="inputSuccess2Status1" style="width:200px;">
 							<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status1" class="sr-only">(success)</span>
 						</div>
 					</div>
 					<div style="float:left; margin-left:50px;">
 						<div style="float: left; margin-top:5px;">
-							<label>»ç¿ëÀÚ ÀÌ¸§</label>
+							<label>ì‚¬ìš©ìž ì´ë¦„</label>
 						</div>
 						<div class="col-md-11 xdisplay_inputx form-group has-feedback" style="width:200px;">
-							<input type="text" class="form-control has-feedback-left" v-model="paramUserName" v-model="paramUserId"placeholder="»ç¿ëÀÚÀÌ¸§" aria-describedby="inputSuccess2Status1" style="width:200px;">
+							<input type="text" class="form-control has-feedback-left" v-model="paramUserName" v-model="paramUserId"placeholder="ì‚¬ìš©ìžì´ë¦„" aria-describedby="inputSuccess2Status1" style="width:200px;">
 							<span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span> <span id="inputSuccess2Status1" class="sr-only">(success)</span>
 						</div>
 					</div>
 					<div style="float:left; margin-left:50px;">
 						<div style="float:left; margin-left:25px;">
-  							<input type=" button" class="btn btn-success" value="°Ë»ö" v-on:click="fnOnClickSearch()">
+  							<input type=" button" class="btn btn-success" value="ê²€ìƒ‰" v-on:click="fnOnClickSearch()">
 						</div>
 					</div>
 				</div>
@@ -120,12 +119,12 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>»ç¿ëÀÚ ID</th>
-								<th>»ç¿ëÀÚ ¸í</th>
-								<th>ÀÌ¸ÞÀÏ</th>
-								<th>»ç¿ëÀÚ Å¸ÀÔ</th>
-								<th>ÈÞ¸é¿©ºÎ</th>
-								<th>»ç¿ë¿©ºÎ</th>
+								<th>ì‚¬ìš©ìž ID</th>
+								<th>ì‚¬ìš©ìž ëª…</th>
+								<th>ì´ë©”ì¼</th>
+								<th>ì‚¬ìš©ìž íƒ€ìž…</th>
+								<th>íœ´ë©´ì—¬ë¶€</th>
+								<th>ì‚¬ìš©ì—¬ë¶€</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -136,14 +135,14 @@
 								<td>{{item.user_type_title}}</td>
 								<td>
 									<div class="btn-group  btn-group-xs">
-			                        	<button class="btn btn-default" v-bind:class="{'btn-info':item.user_rest=='Y'}" type="button" v-on:click="fnOnClickRestYn(item,'Y')">&nbsp; ÈÞ¸é°èÁ¤&nbsp;</button>
-			                        	<button class="btn btn-default" v-bind:class="{'btn-danger':item.user_rest=='N'}" type="button" v-on:click="fnOnClickRestYn(item,'N')">È°µ¿°èÁ¤</button>
+			                        	<button class="btn btn-default" v-bind:class="{'btn-info':item.user_rest=='Y'}" type="button" v-on:click="fnOnClickRestYn(item,'Y')">&nbsp; íœ´ë©´ê³„ì •&nbsp;</button>
+			                        	<button class="btn btn-default" v-bind:class="{'btn-danger':item.user_rest=='N'}" type="button" v-on:click="fnOnClickRestYn(item,'N')">í™œë™ê³„ì •</button>
 									</div>
 								</td>
 								<td>
 									<div class="btn-group  btn-group-xs">
-			                        	<button class="btn btn-default" v-bind:class="{'btn-info':item.user_yn=='Y'}" type="button" v-on:click="fnOnClickUseYn(item,'Y')">&nbsp; »ç¿ë&nbsp;</button>
-			                        	<button class="btn btn-default" v-bind:class="{'btn-danger':item.user_yn=='N'}" type="button" v-on:click="fnOnClickUseYn(item,'N')">¹Ì»ç¿ë</button>
+			                        	<button class="btn btn-default" v-bind:class="{'btn-info':item.user_yn=='Y'}" type="button" v-on:click="fnOnClickUseYn(item,'Y')">&nbsp; ì‚¬ìš©&nbsp;</button>
+			                        	<button class="btn btn-default" v-bind:class="{'btn-danger':item.user_yn=='N'}" type="button" v-on:click="fnOnClickUseYn(item,'N')">ë¯¸ì‚¬ìš©</button>
 									</div>
 								</td>
 							</tr>
