@@ -70,6 +70,9 @@ public class UserServiceImpl extends BaseService implements IUserService{
 		paramMap.put("user_id", paramUserId);
 		UserDto detail = null;
 		detail = userMapper.detail(paramMap);
+		detail.setUser_phone1(detail.getUser_phone().split("-")[0]);
+		detail.setUser_phone2(detail.getUser_phone().split("-")[1]);
+		detail.setUser_phone3(detail.getUser_phone().split("-")[2]);
 		return detail;
 	}
 	@Override
