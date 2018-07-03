@@ -3,8 +3,9 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: {
-	  code : './controller/code-controller.js',
-	  user : './controller/user-controller.js'
+    //code : './controller/code-controller.js',
+    //user : './controller/user-controller.js'
+    baseRoute: './controller/baseRoute-controller.js'
   },
   output: {
     path: path.resolve(__dirname, '.././base/js/distribute'),
@@ -19,7 +20,7 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {

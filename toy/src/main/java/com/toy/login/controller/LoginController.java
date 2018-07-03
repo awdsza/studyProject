@@ -21,9 +21,15 @@ public class LoginController {
 	@Autowired
 	private IUserService userService;
 
-	@RequestMapping("/")
+	@RequestMapping("/login")
 	public ModelAndView loginView(ModelAndView mv) {
 		mv.setViewName("base/login/login");
+		return mv;
+	}
+
+	@RequestMapping("/")
+	public ModelAndView baseView(ModelAndView mv) {
+		mv.setViewName("base/index");
 		return mv;
 	}
 
