@@ -1,3 +1,8 @@
+
+/* @ parameter 
+ * @ example "{0}{1}{0}".format('A','B','C'); 
+ * @ result -> ABC
+*/
 String.prototype.format = function(){
     var result = this ;
     for(var i=0;i<arguments.length;i++){
@@ -6,6 +11,3 @@ String.prototype.format = function(){
     }
     return result ; 
 }
-(function(){
-    "{0}{1}{0}".format('A','B','C');
-})()
