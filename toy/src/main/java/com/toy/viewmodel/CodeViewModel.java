@@ -8,7 +8,7 @@ import com.toy.code.dto.CodeDto;
 import lombok.Data;
 
 @Data
-public class CodeViewModel extends BaseViewModel{
+public class CodeViewModel extends BaseViewModel {
 	private String paramParentCode;
 	private String paramCodeTitle;
 	private String paramChildCode;

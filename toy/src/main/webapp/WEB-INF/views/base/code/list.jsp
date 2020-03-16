@@ -10,7 +10,7 @@
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="${pageContext.request.contextPath}/code/parent/list">Code관리</a></li>
 					<li><a href="${pageContext.request.contextPath}/user/list">사용자관리</a></li>
-					<li><a href="#">Analytics</a></li>
+					<li><a href="#">게시판</a></li>
 					<li><a href="#">Export</a></li>
 				</ul>
 				<!-- <ul class="nav nav-sidebar">
@@ -73,6 +73,6 @@
 		</div>
 	</div>
 	<%@ include file="../include/script.jsp" %>
-	<script src="${pageContext.request.contextPath}/resources/base/js/controller/code-controller.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/base/js/distribute/code-build.js"></script>
 </body>
 </html>

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.toy.base.BaseKeyword;
+import com.toy.code.service.ICodeService;
 import com.toy.user.service.IUserService;
 import com.toy.viewmodel.UserViewModel;
 
@@ -14,7 +16,8 @@ import com.toy.viewmodel.UserViewModel;
 public class UserController {
 	@Autowired
 	private IUserService userService;	
-	
+	@Autowired
+	private ICodeService codeService;
 	@RequestMapping("/action/user/insert")
 	public ModelAndView insertUserAction(UserViewModel vm,ModelAndView mv) throws Exception{
 		userService.insert(vm.getDetail());
@@ -29,6 +32,12 @@ public class UserController {
 	public UserViewModel listUserAction(@RequestBody UserViewModel vm, ModelAndView mv) throws Exception{
 		vm.setTotalCount(userService.totalCount(vm.getParamUserId(),vm.getParamUserName()));
 		vm.setListUser(userService.list(vm.getParamUserId(),vm.getParamUserName(),vm.getPageNum(),vm.getPageSize()));
+		return vm;
+	};
+	@RequestMapping("/action/user/detail")
+	public UserViewModel detailUserAction(@RequestBody UserViewModel vm, ModelAndView mv) throws Exception{
+		vm.setDetail(userService.detail(vm.getParamUserId()));
+		vm.setListUserType(codeService.listChildCode(BaseKeyword.USR_TYPE));
 		return vm;
 	};
 	@RequestMapping("/action/user/rest/update")
